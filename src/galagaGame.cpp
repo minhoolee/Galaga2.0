@@ -28,8 +28,8 @@ GalagaGame::GalagaGame() : window(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), "Galag
 	helpText.setColor(sf::Color::White);
 	helpText.setString("          Galaga 2.0\
       \n Written by Min Hoo Lee (2016)\
-      \n\nPress \"M\" for Multiplayer Mode!\
-      \n  Press \"Q\" to quit the game!\
+      \n\nPress \"v\" for Multiplayer Mode!\
+      \n  Press \"q\" to quit the game!\
       \n\n Player WHITE: Arrows + SPACE");
 	helpText.setCharacterSize(12);
 
@@ -55,8 +55,12 @@ void GalagaGame::run()
 	particle.animateParticlesIdle();
 	particle2.animateParticlesIdle();
 
+  int i = 0;
 	while (window.isOpen())
 	{
+    if (i == 1)
+      std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+    i++;
     p1ScoreText.setString(std::to_string(player1Score));
 
     if (MULTI_PLAYER)
@@ -64,7 +68,7 @@ void GalagaGame::run()
       p2ScoreText.setString(std::to_string(player2Score));
       helpText.setString("          Galaga 2.0\
           \n Written by Min Hoo Lee (2016)\
-          \n\nPress \"s\" for Singleplayer Mode!\
+          \n\nPress \"v\" for Singleplayer Mode!\
           \n  Press \"q\" to quit the game!\
           \n\n       MULTI PLAYER MODE\
           \nPlayer WHITE: Arrows + RControl\
@@ -74,7 +78,7 @@ void GalagaGame::run()
     {
       helpText.setString("          Galaga 2.0\
         \n Written by Min Hoo Lee (2016)\
-        \n\nPress \"m\" for Multiplayer Mode!\
+        \n\nPress \"v\" for Multiplayer Mode!\
         \n  Press \"q\" to quit the game!\
         \n\n       SINGLE PLAYER MODE\
         \n Player WHITE: Arrows + SPACE");
@@ -236,14 +240,8 @@ void GalagaGame::processEvents()
 
 		if (event.type == sf::Event::KeyPressed)
 		{
-			// Press 'M' to switch modes (from Singleplayer -> Multiplayer)
-			if (SINGLE_PLAYER && event.key.code == sf::Keyboard::M)
-			{
-				SINGLE_PLAYER = !SINGLE_PLAYER;
-				MULTI_PLAYER = !MULTI_PLAYER;
-			}
-			// Press 'S' to switch modes (from Multiplayer -> Singleplayer)
-			if (MULTI_PLAYER && event.key.code == sf::Keyboard::S)
+			// Press 'V' to switch modes (from Singleplayer -> Multiplayer and vice versa)
+			if (event.key.code == sf::Keyboard::V)
 			{
 				SINGLE_PLAYER = !SINGLE_PLAYER;
 				MULTI_PLAYER = !MULTI_PLAYER;
