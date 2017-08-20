@@ -1,5 +1,5 @@
 # Galaga2.0
-By Min Hoo Lee (August 2016)
+By Min Hoo Lee (July 2015)
 
 ## Project Description
 This is a summer project that I completed in ten days. 
