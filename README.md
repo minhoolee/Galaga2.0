@@ -5,6 +5,10 @@ By Min Hoo Lee (July 2015)
 This is a summer project that I completed in ten days. 
 I created a game that is similar to the popular arcade game, Galaga, but 
 different in a few ways.
+Note: the code for this is pretty spaghetti because I wrote this with only
+one year of coding experience. For a slightly better version that demonstrates
+inheritance, see [SaveTheWorld](https://github.com/minhoolee/SaveTheWorld),
+which I hastily wrote in a week as a freshman in college.
 
 Galaga is fairly complicated, so many features were unimplemented in Galaga2.0 
 (for now?!). That said, my intention was not to create a replica but to have a 
